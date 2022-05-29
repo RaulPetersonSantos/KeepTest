@@ -1,0 +1,449 @@
+z<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Keep Swimming | Monitoramento</title>
+	<link rel="stylesheet" href="nav.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+	<script src="http://www.chartjs.org/dist/2.7.1/Chart.js"></script>
+	<script src="http://www.chartjs.org/samples/latest/utils.js"></script>
+	<script src="../../src/controllers/medidaController.js"></script>
+
+	<style>
+		.canvas {
+			-moz-user-select: none;
+			-webkit-user-select: none;
+			-ms-user-select: none;
+		}
+	</style>
+
+</head>
+
+<body onload="obterDadosGrafico(1)">
+
+	<div class="header">
+		<img src="./logo ppt2.png" alt="" height="60px">
+	</div>
+
+	<div class="corpoDecima">
+
+
+		<div id="sidebarMenu">
+			<ul class="sidebarMenuInner">
+				<li><a href="./dashboard.html"><img src="./dash.png" alt="" height="25px"> Dashboard</a> </li>
+				<li> <a href="graficos.html"><img src="./monitoramento.png" alt="" height="25px">Monitoramento</a></li>
+				<li> <a href="dash-cadastros.html"><img src="./perfil.png" alt="" height="25px">Cadastrar Desenvolvedor</a></li>
+				<li> <a href="cadastro-maquina.html"><img src="./perfil.png" alt="" height="25px">Cadastrar Máquina</a></li>
+				<li> <a href="https://app.pipefy.com/public/form/w7YSTr_A">
+						<img src="./suporte.png" alt="" height="25px"> Suporte</a></li>
+				<li><a href="../index.html">
+						<div class="sair">
+							<img src="./logout 1.png" alt="" height="50px">
+						</div>
+					</a></li>
+			</ul>
+		</div>
+
+		<div id='center' class="main">
+			<div class="dash">
+				<div class="div_maquinas">
+					<button class="div_maquina1" onclick="obterDadosGrafico(1)"><b>Bruno</b></button>
+					<button class="div_maquina2" onclick="obterDadosGrafico(2)"><b>Lucas</b></button>
+					<button class="div_maquina3" onclick="obterDadosGrafico(3)"><b>Raul</b></button>
+					<button class="div_maquina4" onclick="obterDadosGrafico(4)"><b>Victor</b></button>
+					<button class="div_maquina5" onclick="obterDadosGrafico(5)"><b>Neto</b></button>
+				</div>
+				<div class="regua">
+				
+					<div class="item-regua alerta-frio">
+						<h3>Consumo CPU</h2>
+						<h4>Alerta abaixo uso</h4>
+						<h2> 0% - 25% Consumo</h2>
+					</div>
+				
+					<div class="item-regua alerta-quente">
+						<h3>Consumo CPU</h3>
+						<h4>Alerta Crítico Alto uso</h4>
+						<h2>85-100% Consumo</h2>
+					</div>
+					<div class="item-regua perigo-quente">
+						<h4>baixo nível de processamento</h4>
+						<h2> 0 - 20 MIPS </h2>
+					</div>
+
+					<div class="item-regua alerta-memoria">
+						<h4>Alto uso da memoria</h4>
+						<h2> 75% - 100% </h2>
+					</div>
+
+				</div>
+
+				<div class="inf_dash">
+
+
+					<select name="" id="sel_comp" class="sel_componentescss">
+						<option value="1">Selecione</option>
+						<option value="1">Memoria</option>
+						<option value="2">processador</option>
+						<option value="3">CPU</option>
+					</select>
+
+
+					<div class="grafico">
+						<h1>
+							Monitoramento de Hardware
+						</h1>
+						<div id="divMostrar"></div>
+
+						<canvas id="chart" class="canvas"></canvas>
+						<br>
+					</div>
+
+					<div class="div_componente" id="div_alerta">
+						Selecione o componente e clique no usuário
+					</div>
+
+
+				</div>
+			</div>
+
+		</div>
+
+		<script>
+
+		let proximaAtualizacao;
+
+
+		function obterDadosGrafico(idMaquina) {
+			var componenteSelecionado = sel_comp.value;
+
+				if (proximaAtualizacao != undefined) {
+					clearTimeout(proximaAtualizacao);
+				}
+
+				if(componenteSelecionado == 1 || componenteSelecionado == 2)
+				{
+
+					fetch(`/medidas/ultimas/${idMaquina}`, { cache: 'no-store' }).then(function (response) {
+						if (response.ok) {
+							response.json().then(function (resposta) {
+								console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+								resposta.reverse();
+	
+								plotarGrafico(resposta, idMaquina);
+							});
+						} else {
+							console.error('Nenhum dado encontrado ou erro na API');
+						}
+					})
+						.catch(function (error) {
+							console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+						});
+				} else if (componenteSelecionado == 3){
+
+					fetch(`/medidas/buscarConsumoCPU/${idMaquina}`, { cache: 'no-store' }).then(function (response) {
+						if (response.ok) {
+							response.json().then(function (resposta) {
+								console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+								resposta.reverse();
+	
+								plotarGrafico(resposta, idMaquina);
+							});
+						} else {
+							console.error('Nenhum dado encontrado ou erro na API');
+						}
+					})
+						.catch(function (error) {
+							console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+						});
+				}
+
+
+		}
+
+
+		function plotarGrafico(resposta, idMaquina) {
+			console.log('iniciando plotagem do gráfico...');
+			var componenteSelecionado = sel_comp.value;
+			var nomeLabel;
+			var labelString;
+
+			          if(componenteSelecionado == 1)
+					{
+						nomeLabel = 'Memoria';		
+						labelString = 'Uso MB'
+					} else if (componenteSelecionado == 2)
+					{					
+						nomeLabel = 'Processador';		
+						labelString = 'MIPS'		
+					}
+					else if (componenteSelecionado == 3)
+					{
+						nomeLabel = 'CPU';
+						labelString = 'Uso %'
+					}
+
+			
+			
+			var dados = {
+				labels: [],
+				datasets: [
+					{
+						
+						label: nomeLabel,
+						borderColor: '#61a01a',
+						backgroundColor: '#47790e',
+						fill: true,
+						data: []
+					}
+				]
+			};
+
+			for (i = 0; i < resposta.length; i++) {
+            var registro = resposta[i];
+            console.log("registro::::::::");
+            console.log(registro);
+
+			var startIndex = registro.Hora.indexOf('2022 ', 0);
+			var endIndex = registro.Hora.indexOf(' ', startIndex);
+			var registroHora = registro.Hora.slice(endIndex, endIndex + 9);
+
+			
+			console.log(registroHora);
+
+
+            dados.labels.push(registroHora);
+
+			if(componenteSelecionado == 1)
+			{
+				dados.datasets[0].data.push((registro.dadosMemoria)/1048576);				
+			} else if (componenteSelecionado == 2)
+			{
+				
+				dados.datasets[0].data.push(registro.dadosProcessador);				
+			}
+			else if (componenteSelecionado == 3)
+			{
+				dados.datasets[0].data.push((registro.usoCPU)/100);
+			}
+        }
+
+			console.log(JSON.stringify(dados));
+
+		var context = document.getElementById("chart").getContext("2d");
+		context.canvas.width = 1000;
+		context.canvas.height = 400;
+	
+		window.grafico_linha = Chart.Line(context, {
+			type: 'line',
+			data: dados,
+			options: {
+				scales: {
+					xAxes: [{
+						distribution: 'series',
+						ticks: {
+							beginAtZero: true
+						}
+					}],
+					yAxes: [{
+						scaleLabel: {
+							display: true,
+							labelString: labelString
+						},
+						ticks: {
+							beginAtZero: true
+						}
+					}]
+				},
+				animation: {
+					tension: {
+						duration: 1000,
+						easing: 'easeInOutBack',
+						from: 1,
+						to: 0,
+						loop: true
+					}
+	
+				}
+			}
+		});
+	
+		//var chart = new Chart(context, window.);
+		setTimeout(() => atualizarGrafico(idMaquina, dados,componenteSelecionado), 3000);
+    }
+
+	function atualizarGrafico(idMaquina, dados, componenteSelecionado) {
+		
+
+		var caminhoFetch = ``;
+
+		if(componenteSelecionado == 1 || componenteSelecionado == 2)
+		{
+			caminhoFetch = "/medidas/tempo-real/";
+		} else if (componenteSelecionado == 3)
+		{
+			caminhoFetch = "/medidas/tempo-real-cpu/";
+		}
+
+        fetch(`${caminhoFetch}${idMaquina}`, { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (novoRegistro) {
+
+					var startIndex = novoRegistro[0].Hora.indexOf('2022 ', 0);
+					var endIndex = novoRegistro[0].Hora.indexOf(' ', startIndex);
+					var registroHora = novoRegistro[0].Hora.slice(endIndex, endIndex + 9);
+
+                    console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
+                    console.log(`Dados atuais do gráfico: ${dados.labels}`);
+                    console.log(`Dados atuais do gráfico: ${dados.datasets[0].data}`);
+
+                    // tirando e colocando valores no gráfico
+                    dados.labels.shift(); // apagar o primeiro
+                    dados.labels.push(registroHora); // incluir um novo momento
+                    dados.datasets[0].data.shift();  // apagar o primeiro de umidade
+
+					if(componenteSelecionado == 1)
+					{
+						dados.datasets[0].data.push((novoRegistro[0].dadosMemoria)/1048576);			
+					} else if (componenteSelecionado == 2)
+					{						
+						dados.datasets[0].data.push(novoRegistro[0].dadosProcessador);				
+					}else if (componenteSelecionado == 3)
+					{
+						dados.datasets[0].data.push((novoRegistro[0].usoCPU)/100)
+					}
+            ///////////////// ALERTAS ///////////////////
+			var memoriaDisponivel = (novoRegistro[0].memoriaDisponivel)/1048576;
+			var memoriaEmUso = (novoRegistro[0].dadosMemoria)/1048576;
+			var memoriaTotal = memoriaEmUso + memoriaDisponivel;
+
+		
+
+                     if((novoRegistro[0].usoCPU)/100 > 85) {
+                         dados.datasets[0].borderColor = "#cd32328f";
+                         dados.datasets[0].backgroundColor = "#cd32328f";
+                            
+						div_alerta.innerHTML = "Uso da cpu ALTA! <br> Recomendamos reiniciar o PC";
+                     } else if((novoRegistro[0].usoCPU)/100 < 25)
+					 {
+						dados.datasets[0].borderColor = "#cd32328f";
+                     dados.datasets[0].backgroundColor = "#cd32328f";
+                            
+						div_alerta.innerHTML = "Uso da cpu baixa! <br> Indicativo de funcionário ocioso";
+					 }					 
+					 else if(novoRegistro[0].dadosProcessador < 20)
+					 {
+						dados.datasets[0].borderColor = "#cd32328f";
+                         dados.datasets[0].backgroundColor = "#cd32328f";
+						div_alerta.innerHTML = "Processador com baixo nível de processamento!<br>"
+						+ "recomendamos: reiniciar o PC";
+					 }
+					 else if(memoriaEmUso > memoriaTotal * 0.75)
+					 {
+						dados.datasets[0].borderColor = "#cd32328f";
+                         dados.datasets[0].backgroundColor = "#cd32328f";
+						div_alerta.innerHTML = "Memoria acima de 75%! <br>"
+						+"Reinicie o pc<br> Exclua arquivos temporários <br> Aproveite para deletar os programas que não usa";
+					 }
+				
+
+                    window.grafico_linha.update();
+
+                    proximaAtualizacao = setTimeout(() => atualizarGrafico(idMaquina, dados,componenteSelecionado), 5000);
+
+                });
+
+                if(novoRegistro[0].dadosMemoria < 650) {
+                    //canvas_grafico.dados.datasets[0].backgroundColor = "red"
+                }
+
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+                proximaAtualizacao = setTimeout(() => atualizarGrafico(idMaquina, dados), 5000);
+            }
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
+
+    }
+	
+
+			// setInterval(() => {
+			// 	get_data();
+			// }, 800);
+
+		</script>
+</body>
+
+</html>
+
+
+
+
+
+
+<script>
+				//Função para obter os dados de temperatura do server
+			//Seria mais interessante fazer isso com WebSocket, porém para fins academicos, os dados serão atualizados via HTTP
+
+			//Esse atributo dentro do contexto serve para saber qual foi o último índice processado, assim eliminado os outros elementos na
+			//hora de montar/atualizar o gráfico
+			// this.lastIndexTemp = 0;
+			// this.time = 0;
+
+			// function get_data() {
+
+			// 	var http = new XMLHttpRequest();
+			// 	http.open('GET', 'http://localhost:3000/medidas/atividadeSensor', false);//LOCAL DE ONDE VAI OS DADOS
+			// 	http.send(null);
+
+			// 	var obj = JSON.parse(http.responseText);
+			// 	if (obj.data.length == 0) {
+			// 		return;
+			// 	}
+
+			// 	var _lastIndexTemp = this.lastIndexTemp;
+			// 	this.lastIndexTemp = obj.data.length;
+			// 	listTemp = obj.data.slice(_lastIndexTemp);
+
+			// 	listTemp.forEach(data => {
+			// 		Máximo de 60 itens exibidos no gráfico
+			// 		if (chart.data.labels.length == 10 && chart.data.datasets[0].data.length == 10) {
+			// 			chart.data.labels.shift();
+			// 			chart.data.datasets[0].data.shift();
+			// 		}
+
+			// 		chart.data.labels.push(this.time++);
+			// 		chart.data.datasets[0].data.push(parseFloat(data));
+			// 		chart.update();
+			// 		if (this.time <= 11) {
+			// 			divMostrar.innerHTML = '<div style="border-radius: 50%; display: flex; justify-content: center; font-weight: bolder; align-items: center; background-color: red; color: white; width: 30px; heigth: 50px;padding:5px;">' + this.time + '</div>';
+
+			// 		}
+			// 		else if (this.time >= 11 && this.time <= 25) {
+			// 			divMostrar.innerHTML = '<div style="border-radius: 50%; display: flex; justify-content: center; font-weight: bolder; align-items: center; background-color: yellow; color: black; width: 30px; heigth: 50px;padding:5px;">' + this.time + '</div>';
+
+			// 		}
+			// 		else if (this.time >= 26 && this.time <= 74) {
+			// 			divMostrar.innerHTML = '<div style="border-radius: 50%; display: flex; justify-content: center; font-weight: bolder; align-items: center; background-color: purple; color: white; width: 30px; heigth: 50px;padding:5px;">' + this.time + '</div>';
+
+			// 		}
+			// 		else if (this.time >= 75 && this.time <= 90) {
+			// 			divMostrar.innerHTML = '<div style="border-radius: 50%; display: flex; justify-content: center; font-weight: bolder; align-items: center; background-color: #ff7b00; color: white; width: 30px; heigth: 50px;padding:5px;">' + this.time + '</div>';
+
+			// 		}
+			// 		else {
+			// 			divMostrar.innerHTML = '<div style="border-radius: 50%; display: flex; justify-content: center; font-weight: bolder; align-items: center; background-color:green; color: white; width: 30px; heigth: 50px;padding:5px;">' + this.time + '</div>';
+
+			// 		}
+			// 	});
+			// 	document.getElementById('average').textContent = obj.average;
+
+
+
+			// }
+</script>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>keep Swimming | Login</title>
+
+    <script src="./javaScript/login.js"></script>
+    <script src="./assets/js/funcoes.js"></script>
+    <link rel="stylesheet" href="./css/tela-login.css">
+    <!-- <link rel="stylesheet" href="../css/index.css"> -->
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="logoEmpresa">
+        <a href="./index.html"><img src="./assets/icons/setas-traseiras.png" alt="" class="setaVoltar"> </a>
+        <div class="logoNavbar">
+            <a href="./index.html"><img src="./assets/icons/logo-padrao.png" alt=""></a>
+
+        </div>
+
+    </div>
+
+
+
+    <div class="telaInicial">
+
+        <div class="ocean">
+            <div class="bubble bubble--1"></div>
+            <div class="bubble bubble--2"></div>
+            <div class="bubble bubble--3"></div>
+            <div class="bubble bubble--4"></div>
+            <div class="bubble bubble--5"></div>
+            <div class="bubble bubble--6"></div>
+            <div class="bubble bubble--7"></div>
+            <div class="bubble bubble--8"></div>
+            <div class="bubble bubble--9"></div>
+            <div class="bubble bubble--10"></div>
+            <div class="bubble bubble--11"></div>
+            <div class="bubble bubble--12"></div>
+            <div id="octocat"></div>
+
+            <div class="formulario">
+                <h2>Olá de volta!</h2>
+                <form id="form_login" method="post" onsubmit="return logar()">
+                    <span class="tipo_campo">E-mail:</span>
+                        <input name="email" id="email_input" type="text" placeholder="Login">
+
+                    <span class="tipo_campo">Senha:</span>
+                        <input name="senha" id="senha_input" type="password" placeholder="******">
+                    <div class="div_botao">
+                        <button class="btn efeito"  type="submit">Navegar</button>
+                    </div>
+                </form>
+
+
+                <div id="div_aguardar" class="loading-div">
+                    <img src="./assets/aguarde-pink.gif" id="loading-gif">
+
+                </div>
+                <div id="div_erros_login">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

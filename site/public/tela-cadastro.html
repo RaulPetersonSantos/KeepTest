@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>keep Swimming | Cadastro</title>
+
+
+    <script src="./assets/js/funcoes.js"></script>
+    <script src="./javaScript/cadastro.js"></script>
+    <link rel="stylesheet" href="./css/tela-cadastro.css">
+    <!-- <link rel="stylesheet" href="../css/index.css"> -->
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="logoEmpresa">
+        <div class="logoNavbar">
+            <a href="./index.html"><img src="./assets/icons/logo-padrao.png" alt=""></a>
+        </div>
+    </div>
+
+
+    <div class="ocean">
+        <div class="bubble bubble--1"></div>
+        <div class="bubble bubble--2"></div>
+        <div class="bubble bubble--3"></div>
+        <div class="bubble bubble--4"></div>
+        <div class="bubble bubble--5"></div>
+        <div class="bubble bubble--6"></div>
+        <div class="bubble bubble--7"></div>
+        <div class="bubble bubble--8"></div>
+        <div class="bubble bubble--9"></div>
+        <div class="bubble bubble--10"></div>
+        <div class="bubble bubble--11"></div>
+        <div class="bubble bubble--12"></div>
+        <div id="octocat"></div>
+
+       
+        <div class="formulario">
+                <h2>Bem-vindo!</h2>
+                <form id="form_cadastro" method="post" onsubmit="return bt_cadastro()">
+
+                    <div class="ladoEsquerdo">
+
+                        <div class="labels">
+                            <span class="tipo_campo">Razão Social:</span>
+                            <input name="empresa" id="nome_input" type="text" placeholder="Nome da empresa">
+                        </div>
+
+                        <div class="labels">
+                            <span class="tipo_campo">E-mail:</span>
+                            <input name="email" id="email_input" type="text" placeholder="meuemail@provedor.com">
+                        </div>
+
+                        <div class="labels">
+                            <span class="tipo_campo">CEP</span>
+                            <input name="cep" id="cep_input" type="text" placeholder="CEP">
+                        </div>
+
+                        <div class="labels">
+                            <span class="tipo_campo">Senha:</span>
+                            <input name="senha" id="senha_input" type="password" placeholder="******">
+                        </div>
+                    </div>
+
+
+                    <div class="ladoDireito">
+
+                        <div class="labels">
+                            <span class="tipo_campo">Confirmação de E-mail</span>
+                            <input name="confEmail" type="text" id="confirmacao_email_input"
+                                placeholder="Confirme E-mail">
+                        </div>
+
+                        <div class="labels">
+                            <span class="tipo_campo">CNPJ</span>
+                            <input name="cnpj" id="cnpj_input" type="text" placeholder="CNPJ">
+                        </div>
+
+                        <div class="labels">
+                            <span class="tipo_campo">Confirmação da Senha:</span>
+                            <input name="confirmacaosenha" id="confirmacao_senha_input" type="password" placeholder="******">
+                        </div>
+
+                        <div class="div_botao">
+                            <button class="btn efeito">Navegar</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div id="div_aguardar" class="loading-div">
+                <img src="./assets/aguarde-pink.gif" id="loading-gif">
+
+            </div>
+
+            <div id="div_erros_login"></div>
+        
+</body>
+
+</html>
+

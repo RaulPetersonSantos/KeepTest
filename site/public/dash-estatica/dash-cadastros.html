@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keep Swimming | Cadastro Funcionário</title>
+
+
+    <link rel="stylesheet" href="dash-cadastro.css">
+    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+
+    <!-- <link rel="stylesheet" href="../public/css/tela-cadastro.css"> -->
+
+</head>
+
+<body>
+
+    <nav>
+        <div class="sidebar-top">
+          <span class="shrink-btn">
+            <i class='bx bx-chevron-left'></i>
+          </span>
+          <img src="../assets/icons/logoSemTexto.png" class="logo" alt="">
+          <h3 class="hide">KeepSwimming</h3>
+        </div>
+    
+        <div class="search">
+         
+        </div>
+    
+        <div class="sidebar-links">
+          <ul>
+            <div class="active-tab"></div>
+            <li class="tooltip-element" data-tooltip="0">
+              <a href="#" data-active="0">
+                <div class="icon">
+                  <i class='bx bx-notepad'></i>
+                  <i class='bx bxs-notepad'></i>
+                </div>
+                <span class="link hide">Dashboard</span>
+              </a>
+            </li>
+            <li class="tooltip-element" data-tooltip="1">
+              <a href="dashboard.html" data-active="1">
+                <div class="icon" href>
+                  <i class='bx bx-card' ></i>
+                  <i class='bx bxs-card' ></i>
+                </div>
+                <span class="link hide"> Máquina </span>
+              </a>
+            </li>
+            <li class="tooltip-element" data-tooltip="2">
+              <a href="#"  class="active" data-active="2">
+                <div class="icon">
+                  <i class='bx bx-id-card'></i>
+                  <i class='bx bxs-id-card' ></i>
+                </div>
+                <span class="link hide">Desenvolvedor</span>
+              </a>
+            </li>
+            <li class="tooltip-element" data-tooltip="3">
+              <a href="#" data-active="3">
+                <div class="icon">
+                  <i class='bx bx-bar-chart-square'></i>
+                  <i class='bx bxs-bar-chart-square'></i>
+                </div>
+                <span class="link hide">Monitoramento</span>
+              </a>
+            </li>
+            <div class="tooltip">
+              <span class="show">Dashboard</span>
+              <span>Máquina</span>
+              <span>Desenvolvedor</span>
+              <span>Monitoramento</span>
+            </div>
+          </ul>
+    
+          <h4 class="hide">Atalhos</h4>
+     
+          <ul>
+            <!-- <li class="tooltip-element" data-tooltip="0"> -->
+              <a href="#" data-active="4">
+                <div class="icon">
+                  <!-- <i class='bx bx-notepad'></i> -->
+                  <!-- <i class='bx bxs-notepad'></i> -->
+                </div>
+                <!-- <span class="link hide">Tasks</span> -->
+              </a>
+              <li class="tooltip-element" data-tooltip="1">
+                <a href="https://app.pipefy.com/public/form/w7YSTr_A" data-active="5">
+                  <div class="icon">
+                    <i class='bx bx-help-circle'></i>
+                    <i class='bx bxs-help-circle'></i>
+                  </div>
+                  <span class="link hide">Suporte</span>
+                </a>
+              </li>
+            </li>
+            <div class="tooltip">
+              <span class="show"></span>
+              <span>Suporte</span>
+            </div>
+          </ul>
+        </div>
+    
+        <div class="sidebar-footer">
+          <a href="#" class="account tooltip-element" data-tooltip="0">
+            <i class='bx bx-user'></i>
+          </a>
+          <div class="admin-user tooltip-element" data-tooltip="1">
+            <div class="admin-profile hide">
+              <img src="./img/face-1.png" alt="">
+              <div class="admin-info">
+                <h3>var idEmpresa = sessionStorage.getItem('ID_USUARIO')</h3>
+                <h5>Admin</h5>
+              </div>
+            </div>
+            <a href="#" class="log-out">
+              <i class='bx bx-log-out'></i>
+            </a>
+          </div>
+          <div class="tooltip">
+            <span class="show">Raul</span>
+            <span>Logout</span>
+          </div>
+        </div>
+      </nav>
+
+        <!-- <div id='center' class="main "> -->
+    <main>
+
+            <div class="baixo">
+
+
+                <div class="formulario">
+                <form id="form_cadastro">
+
+                    <h3>Cadastre seus funcionarios</h3>
+
+                    <div class="roles">
+
+                        <div class="ladoEsquerdo">
+                            <label for="username">Nome Funcionario</label>
+                            <input type="text" name="nome_Funcionario" placeholder="Nome" id="username">
+
+                            <label for="email">Email Funcionarios</label>
+                            <input type="email" name="email_funcionario" placeholder="Email corparativo" id="email_funcionario">
+
+                            <label for="username">Gestor Responsavel</label>
+                            <input type="" name="Gestor" placeholder="Nome" id="nome_gestor">
+
+
+
+                        </div>
+                        
+                        
+                        
+                        <div class="ladodireito">
+                            <label>Cargo</label>
+                            <input type="" name="cargo" placeholder="Desenvolvedor Back-End" id="cargo">
+                            
+                            <label for="password">Senha</label>
+                            <input type="password" name="senha" placeholder="*******" id="senha">
+                            
+                            
+                            <label for="password">Confirma Senha</label>
+                            <input type="password" name="confirmacao-senha" placeholder="*******" id="confirmacao_senha">
+                        </div>
+                        
+                        
+                                                    <div class="div_botao">
+                                                        <button class="btn efeito" type="button" onclick="cadastrarFuncionario()">Cadastrar</button>
+                                                    </div>
+                        <div class="cardErro" id="erro" style="display: none;"></div>
+
+                    </div>
+                </form>
+
+            </div>
+
+                <div class="mural_funcionarios" id="mural">
+                        
+                    <button onclick="atualizarFeed()" class="btn_mural_funcionarios" id="btn_funcionarios">Usuários cadastrados</button>
+                    <div id="feed_container" class="feed-container"></div>
+                       
+
+                    <button onclick="atualizarFeed()" style="display: none;" id="atualizar" class="atualizarMural">Atualizar Feed</button>
+                       
+                            <div class="botoes_crud">
+                                    <button style="display: none;" id="btn_deletar" onclick="deletarUsuario()" class="btnDeletar">Deletar usuário</button>   
+                                    <button style="display: none;" id="btn_atualizar" onclick="updateUsuario()" class="btnUpdate">Atualizar usuário</button>             
+                            </div>
+                            
+                            <input type = "number" placeholder="id do Funcionário" id="updateDelete" style="display: none;" class="inputDeleteUpdate">
+
+                            
+                            <select  id="atualizarOpcoes" style="display: none;" class="selectUpdate">
+                                <option value="">Atualizar:</option>
+                                <option value="id">ID</option>
+                                <option value="nome">Nome</option>
+                                <option value="email">Email</option>
+                                <option value="cargo">Cargo</option>
+                            </select>
+
+                            <input id="ipt_update" style="display: none;" class="ipt_update"> 
+
+                            <div id="respostaDeleteUpdate"></div>
+
+                      </div>
+                 </div>
+
+                </div>
+            </main>
+
+
+        </div>
+
+
+    </div>
+
+
+    </div>
+
+</body>
+
+</html>
+<script src="app.js"></script>
+
+<script>
+   
+   var ultimoIdFuncionario = 0;
+
+    function cadastrarFuncionario()
+     {
+        
+        var idEmpresa = sessionStorage.getItem('ID_USUARIO');
+
+         var nomeVar = username.value;
+         var emailVar = email_funcionario.value;
+         var gestorVar = nome_gestor.value;
+         var cargoVar = cargo.value;
+         var senhaVar = senha.value;
+         var confirmacaoSenhaVar = confirmacao_senha.value;
+ 
+         if (nomeVar == "" || emailVar == "" || gestorVar == "" || cargoVar == "" || senhaVar == "" || confirmacaoSenhaVar == "") {
+            erro.style.display = "block"
+            erro.innerHTML = "Preencha todos os campos para prosseguir!";
+
+           // finalizarAguardar();
+            return false;
+        } else {
+            setInterval(sumirMensagem, 5000)
+        }
+
+        if (emailVar.indexOf("@") == -1 || emailVar.indexOf(".com") == -1) {
+            erro.style.display = "block"
+            erro.innerHTML = "Ops, e-mail inválido! Verifique e tente novamente.";
+           // finalizarAguardar();
+            return false;
+        } 
+
+        if (senhaVar != confirmacaoSenhaVar) {
+            erro.style.display = "block"
+            erro.innerHTML = "As senhas inseridas devem ser iguais para prosseguir!";
+            //finalizarAguardar();
+            return false;
+        } else {
+            setInterval(sumirMensagem, 5000)
+        }
+
+
+        // Enviando o valor da nova input
+        fetch("/usuarios/cadastrarFuncionario", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                // crie um atributo que recebe o valor recuperado aqui
+                // Agora vá para o arquivo routes/usuario.js
+                nomeServer: nomeVar,
+                emailServer: emailVar,
+                gestorServer: gestorVar,
+                cargoServer: cargoVar,
+                senhaServer: senhaVar,
+                idEmpresa,
+            })
+        }).then(function(resposta) {
+
+            console.log("resposta: ", resposta);
+
+            if (resposta.ok) {
+                alert("cadastro realizado com sucesso!");
+                console.log('cadastro realizado com sucesso');
+                limparFormulario();
+               // finalizarAguardar();
+            } else {
+                throw ("Houve um erro ao tentar realizar o cadastro!");
+            }
+        }).catch(function(resposta) {
+            console.log(`#ERRO: ${resposta}`);
+           // finalizarAguardar();
+        });
+
+        return false;
+
+     }
+
+     function sumirMensagem() {
+        erro.style.display = "none"
+    }
+
+
+
+
+    function atualizarFeed() {
+        //aguardar();
+        btn_funcionarios.style.display = 'none';
+        atualizarOpcoes.style.display = 'none';
+        ipt_update.style.display = 'none';
+        btn_deletar.style.display = 'block';
+        btn_atualizar.style.display = 'block';
+        updateDelete.style.display = 'block';
+        atualizar.style.display = 'block';
+        respostaDeleteUpdate.innerHTML = "";
+      
+        fetch("/usuarios/listar").then(function (resposta) {
+            if (resposta.ok) {
+                if (resposta.status == 204) {
+                    var feed = document.getElementById("feed_container");
+                    var mensagem = document.createElement("span");
+                    mensagem.innerHTML = "Nenhum resultado encontrado."
+                    feed.appendChild(mensagem);
+                    throw "Nenhum resultado encontrado!!";
+                }
+
+                resposta.json().then(function (resposta) {
+                    console.log("Dados recebidos: ", JSON.stringify(resposta));
+
+                    var feed = document.getElementById("feed_container");
+                    feed.innerHTML = "";
+                    for (var i = 0; i < resposta.length; i++) {
+                        var publicacao = resposta[i];
+
+                        // criando e manipulando elementos do HTML via JavaScript
+                        var divPublicacao = document.createElement("div");
+                        var spanID = document.createElement("span");
+                     //   var spanGestor = document.createElement("span");
+                        var spanNome = document.createElement("span");
+                        var spanEmail = document.createElement("span");
+                        var spanCargo = document.createElement("span");
+                       // var divDescricao = document.createElement("div");
+                      //  var divButtons = document.createElement("div");
+
+                        spanID.innerHTML = "<p>ID: <b>" + publicacao.idFuncionario + "</b>";
+                       // spanGestor.innerHTML = "Gestor: <b>"+ publicacao.fkGestor + "</b>";
+                        spanNome.innerHTML = "<p>Nome: <b>"+publicacao.Nome+"</b></p>";
+                        spanEmail.innerHTML = "<p>Email: <b>" + publicacao.EMAIL + "</b></p>";
+                        spanCargo.innerHTML = "<p>Cargo: <b>" + publicacao.Cargo + "</b></p>";
+                        //divDescricao.innerHTML = "Descrição: <b>"+publicacao.descricao+"</b>";
+
+                        divPublicacao.className = "publicacao";
+                       // spanTitulo.id = "inputNumero"+publicacao.idAviso;
+                        spanID.className = "id-funcionario-span";
+                     //   spanGestor.className = "Gestor";
+                        spanNome.className = "nome-span";
+                        spanEmail.className = "Email-span";
+                        spanCargo.className = "cargo-span";
+                       // spanTitulo.className = "publicacao-titulo";
+                       // divDescricao.className = "publicacao-descricao";
+
+                       // divButtons.className = "div-buttons"
+
+                        divPublicacao.appendChild(spanID);
+                       // divPublicacao.appendChild(spanGestor);
+                        divPublicacao.appendChild(spanNome);
+                        divPublicacao.appendChild(spanEmail);
+                        divPublicacao.appendChild(spanCargo);
+                       // divPublicacao.appendChild(spanTitulo);
+                       // divPublicacao.appendChild(divDescricao);
+                      //  divPublicacao.appendChild(divButtons);
+                        feed.appendChild(divPublicacao);
+
+                        ultimoIdFuncionario = publicacao.idFuncionario;
+                    }
+
+                   // finalizarAguardar();
+                });
+            } else {
+                throw('Houve um erro na API!');
+            }
+        }).catch(function(resposta) {
+            console.error(resposta);
+            //finalizarAguardar();
+        });
+    }
+
+    function deletarUsuario(){
+
+        var idFuncionario = updateDelete.value;
+        respostaDeleteUpdate.innerHTML = "";
+    
+
+        if(idFuncionario == ''  )
+        {
+            alert("id vazio");
+        }
+        else if(ultimoIdFuncionario  < idFuncionario)
+        {
+            alert("Digite um id válido");
+        }
+        else{
+
+        fetch("/usuarios/deletarFuncionario", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                // crie um atributo que recebe o valor recuperado aqui
+                // Agora vá para o arquivo routes/usuario.js
+                
+                idDelete: idFuncionario,
+            })
+        }).then(function(resposta) {
+
+            console.log("resposta: ", resposta);
+
+            if (resposta.ok) {
+                console.log('delete realizado com sucesso');
+                respostaDeleteUpdate.innerHTML = "Delete realizado com sucesso";
+                limparFormulario();
+               // finalizarAguardar();
+            } else {
+                alert("Houve um erro ao tentar realizar o delete!");
+                throw ("Houve um erro ao tentar realizar o delete!");
+            }
+        }).catch(function(resposta) {
+            console.log(`#ERRO: ${resposta}`);
+           // finalizarAguardar();
+        });
+    }
+
+        return false;
+    }
+
+    function updateUsuario(){
+        var idFuncionario = updateDelete.value;
+        var alteracaoFuncionario = ipt_update.value;
+        var select_update = atualizarOpcoes.value;
+        respostaDeleteUpdate.innerHTML = "";
+       
+        
+        
+
+        if(idFuncionario == ''  )
+        {
+            alert("id vazio");
+        }
+        else if(ultimoIdFuncionario  < idFuncionario)
+        {
+            alert("Digite um id válido");
+        } else{
+            atualizarOpcoes.style.display = 'block';
+            ipt_update.style.display = 'block';
+      
+
+        fetch("/usuarios/updateFuncionario", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                // crie um atributo que recebe o valor recuperado aqui
+                // Agora vá para o arquivo routes/usuario.js
+                
+                idUpdate: idFuncionario,
+                alteracao: alteracaoFuncionario,
+                updateEscolhido :  select_update,
+            })
+        }).then(function(resposta) {
+
+            console.log("resposta: ", resposta);
+
+            if (resposta.ok) {
+                console.log('');
+                respostaDeleteUpdate.innerHTML = "Alteração" + ipt_update.value + "do funcionário"+ idFuncionario + "realizado com sucesso";
+                limparFormulario();
+               // finalizarAguardar();
+            } else {
+                throw ("Houve um erro ao tentar realizar a alteração!");
+            }
+        }).catch(function(resposta) {
+            console.log(`#ERRO: ${resposta}`);
+           // finalizarAguardar();
+        });
+    }
+        return false;
+    }
+
+   
+  
+
+</script>

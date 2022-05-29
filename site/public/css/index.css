@@ -1,0 +1,737 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;1,300&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-image: url(../assets/imgs/fundo.png);
+    background-size: cover;
+    min-height: 100vh;
+}
+
+.logo {
+    align-items: center;
+    justify-content: space-between;
+}
+
+.scrolled {
+    height: 1500px;
+    background: #1F1D36;
+    transition: 0.3s ease-in-out;
+    width: 100%;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100vw;
+    height: 100%;
+    padding: 0 5%;
+}
+
+.header {
+    width: 100vw;
+    height: 15vh;
+    color: #fff;
+    position: fixed;
+    z-index: 2;
+    top: 0;
+    background-image: url(../assets/imgs/fundo.png);
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 20vh;
+    background-image: url(../assets/imgs/OndaRoxa.png);
+    background-size: cover;
+}
+
+.logoEmpresa {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.logoNavbar {
+    width: min(13ch);
+}
+
+.logoNavbar img {
+    width: 100%;
+    height: 100%;
+}
+
+.nomeEmpresa {
+    width: 60%;
+    height: 50%;
+}
+
+.nomeEmpresa div {
+    width: 100%;
+    height: 100%;
+    color: whitesmoke;
+    font-size: min(25px);
+}
+
+.navbar {
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    align-items: center;
+    list-style: none;
+    width: 100%;
+    margin: 0px 30px 0px;
+}
+
+.navbar li {
+    color: whitesmoke;
+    margin: 10px;
+}
+
+.navbar li a {
+    color: whitesmoke;
+    text-decoration: none;
+    font-size: min(12px);
+}
+
+
+/* conteudo */
+
+.content {
+    background-size: cover;
+    height: 100vh;
+    width: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    padding-top: 30%;
+}
+
+
+/* testes */
+
+.navbar a {
+    position: relative;
+    display: block;
+    padding: 10px 15px;
+    border: 2px solid #fff;
+    border-radius: 0 20px 0 20px;
+    letter-spacing: 2px;
+    color: #4f29cd;
+    overflow: hidden;
+    background-color: rgba(255, 255, 255, 0.13);
+    font-weight: bolder;
+}
+
+a span {
+    position: relative;
+    z-index: 1;
+    transition: 1s;
+}
+
+a:hover span {
+    color: #fff;
+}
+
+a .wave {
+    position: absolute;
+    top: calc(100% + 22px);
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #00AEFF;
+    transition: 1s;
+    text-decoration: none;
+}
+
+a:hover .wave {
+    top: 0;
+}
+
+a .wave::before {
+    content: "";
+    position: absolute;
+    top: -22px;
+    left: 0;
+    width: 100%;
+    height: 22px;
+    background: url(wave.png);
+    animation: animate 0.5s linear infinite;
+}
+
+@keyframes animate {
+    0% {
+        background-position-x: 0;
+    }
+    100% {
+        background-position-x: 118px;
+    }
+}
+
+.cadastrar {
+    text-align: center;
+    width: 8vw;
+    padding: 2px;
+    background-color: blueviolet;
+    border-radius: 5px;
+}
+
+.cadastrar a {
+    color: whitesmoke;
+    text-decoration: none;
+    font-size: 3vh;
+}
+
+.telaInicial {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100vh;
+}
+
+.ondaAzulTelaInicial {
+    width: 100%;
+    height: 20vh;
+    background-image: url(../assets/imgs/ondaAzulParaCima.png);
+    background-size: cover;
+}
+
+.telaInicial .textoEBarquinho {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 65%;
+}
+
+.telaInicial .textoTelaInicial {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 100%;
+}
+
+.TituloTelaInicial {
+    color: whitesmoke;
+    font-size: min(2.3vw);
+}
+
+.texto {
+    width: 70%;
+    text-align: center;
+    color: whitesmoke;
+    font-size: min(2.1vw);
+}
+
+.barquinhoTelaInicial img {
+    
+    position: relative;
+    top: 17vh;
+    right: 7vw;
+    width: 25vw;
+    height: 50vh;
+}
+
+.ondaAzulParaBaixo {
+    background-image: url(../assets/imgs/ondaAzulParaBaixo.png);
+    background-size: cover;
+    width: 100%;
+    height: 20vh;
+}
+
+.caracteristicasEmpresa {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.caracteristicas {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.missao {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 40%;
+    height: 100vh;
+}
+
+.missao img {
+    width: 50%;
+}
+
+.tituloMissao {
+    color: whitesmoke;
+    font-size: max(25px,15px);
+    font-weight: bolder;
+}
+
+.textoMissao {
+    color: whitesmoke;
+    font-size: 1.3rem;
+}
+
+.visao {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 40%;
+    height: 100%;
+}
+
+.visao img {
+    width: 50%;
+}
+
+.tituloVisao {
+    color: whitesmoke;
+    font-size: max(25px,15px);
+    font-weight: bolder;
+}
+
+.textoVisao {
+    color: whitesmoke;
+    font-size: 1.3rem
+}
+
+.valores {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 40%;
+    height: 100%;
+}
+
+.valores img {
+    width: 50%;
+}
+
+.tituloValores {
+    color: whitesmoke;
+    font-size:max(25px,15px);
+    font-weight: bolder;
+}
+
+.textoValores {
+    color: whitesmoke;
+    font-size: 1.3rem
+}
+
+.ondaRoxaValores {
+    width: 100%;
+    height: 20vh;
+    background-image: url(../assets/imgs/ondaRoxaParaCima\ 2.png);
+    background-size: cover;
+}
+
+.ondaRoxaValoresBaixo {
+    width: 100%;
+    height: 20vh;
+    background-image: url(../assets/imgs/ondaRoxaParaBaixo\ 2.png);
+    background-size: cover;
+}
+
+
+/* Footer */
+
+.footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.alinharCards {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.ondaRoxaFooterCima {
+    width: 100%;
+    height: 20vh;
+    background-image: url(../assets/imgs/ondaRoxaParaCima\ 2.png);
+    background-size: cover;
+}
+
+.ondaRoxaFooterBaixo {
+    width: 100%;
+    height: 20vh;
+    background-image: url(../assets/imgs/ondaRoxaParaBaixo\ 2.png);
+    background-size: cover;
+}
+
+.containerCards {
+    display: flex;
+    justify-content: center;
+    max-width: 100%;
+    flex-wrap: wrap;
+}
+
+.containerCards .card {
+    display: flex;
+    width: 25vw;
+    margin: 30px;
+}
+
+.containerCards .card .box img {
+    width: 100%;
+}
+
+.containerCards .card .box {
+    background: #ebf5fc;
+    border-radius: 15px;
+    transition: 0.5s;
+    padding: 5%;
+}
+
+.containerCards .card:hover .box {
+    transform: translateY(-50px);
+    box-shadow: 0 10 40px rgba(0, 0, 0, 0.2);
+    background: linear-gradient(#4f29cd, #1F1D36);
+}
+
+.containerCards .card .box .conteudo {
+    padding: 7%;
+    text-align: center;
+}
+
+.containerCards .card .box .conteudo h3 {
+    /* Vai analisar entre o 10px e o 2vw, e ficar o o maior valor */
+    font-size: 20px;
+    color: #000;
+    display: flex;
+    justify-content: center;
+    transition: 0.5s;
+}
+
+.containerCards .card:hover .box .conteudo h3 {
+    color: #fff;
+}
+
+.containerCards .card:hover .box .conteudo p {
+    color: #fff;
+}
+
+.containerCards .card .box .conteudo p {
+    font-size: 15px;
+    font-weight: 300;
+    color: #000;
+    padding-top: 10px;
+    transform: 0.5s;
+}
+
+.containerCards .card .box .conteudo a {
+    position: relative;
+    display: inline-block;
+    padding: 4% 10%;
+    background-color: #0E185F;
+    border-radius: 20px;
+    color: #fff;
+    margin-top: 20px;
+    text-decoration: none;
+    font-size: min(15px, 3vw);
+}
+
+.containerCards .card:hover .box .conteudo a {
+    background: #4f29cd;
+}
+
+.block {
+    background-color: black;
+}
+
+.contato {
+    margin-left: 5%;
+}
+
+.imagensFooter {
+    width: min(2vw);
+}
+
+.imagensFooter h2 {
+    color: #fff;
+}
+
+.contatoarea {
+    padding: 30px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.contatoinfo {
+    color: #fff;
+    max-width: 100%;
+    line-height: 55px;
+    font-size: min(45px, 1.2vw);
+    padding-left: 13%;
+    margin-left: 6%;
+}
+
+.contatoinfo i {
+    margin-right: 20px;
+    font-size: 20px;
+}
+
+iframe {
+    min-width: (200px);
+    height: (100px);
+}
+
+.contato-form {
+    max-width: 50%;
+    margin-left: -4%;
+}
+
+.contatoinfo,
+.contato-form {
+    flex: 0.5;
+}
+
+.contato-form h2 {
+    color: #fff;
+    text-align: center;
+    font-size: 25px;
+    margin-bottom: 30px;
+    padding-right: 100%;
+}
+
+.contato-form .texto:first-child {
+    margin-right: 15px;
+}
+
+.ondaAzulFooter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 10vh;
+    background-image: url(../assets/imgs/ondaAzulParaCima.png);
+    background-size: cover;
+}
+
+/*CARROSEL*/
+
+.telaVeniti {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 830px;
+}
+
+#slider {
+    margin: 0 auto;
+    width: 52%;
+    max-width: 100%;
+    /* text-align: center; */
+    padding: 25% 0% 25% 0%;
+}
+
+#slider input[type=radio] {
+    display: none;
+}
+
+#slider label {
+    cursor: pointer;
+    text-decoration: none;
+}
+
+#slides {
+    padding: 10px;
+    border: 3px solid #ccc;
+    background: #fff;
+    position: relative;
+    z-index: 1;
+    height: 540px;
+}
+
+#overflow {
+    width: 100%;
+    overflow: hidden;
+}
+
+#slide1:checked~#slides .inner {
+    margin-left: 0;
+}
+
+#slide2:checked~#slides .inner {
+    margin-left: -100%;
+}
+
+#slide3:checked~#slides .inner {
+    margin-left: -200%;
+}
+
+#slide4:checked~#slides .inner {
+    margin-left: -300%;
+}
+
+#slides .inner {
+    transition: margin-left 800ms cubic-bezier(0.770, 0.000, 0.175, 1.000);
+    width: 400%;
+    /* line-height: 0; */
+    height: 510px;
+}
+
+#slides .slide {
+    width: 25%;
+    float: left;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    color: #fff;
+}
+
+#slides .slide_1 {
+    background: #00171F;
+}
+
+#slides .slide_2 {
+    background: #003459;
+}
+
+#slides .slide_3 {
+    background: #007EA7;
+}
+
+#slides .slide_4 {
+    background: #00A8E8;
+}
+
+#controls {
+    margin: -180px 0 0 0;
+    width: 100%;
+    height: 50px;
+    z-index: 3;
+    position: relative;
+}
+
+#controls label {
+    transition: opacity 0.2s ease-out;
+    display: none;
+    width: 50px;
+    height: 50px;
+    opacity: .4;
+}
+
+#controls label:hover {
+    opacity: 1;
+}
+
+#slide1:checked~#controls label:nth-child(2),
+#slide2:checked~#controls label:nth-child(3),
+#slide3:checked~#controls label:nth-child(4),
+#slide4:checked~#controls label:nth-child(1) {
+    background: url(https://image.flaticon.com/icons/svg/130/130884.svg) no-repeat;
+    float: right;
+    margin: 0 -50px 0 0;
+    display: block;
+}
+
+#slide1:checked~#controls label:nth-last-child(2),
+#slide2:checked~#controls label:nth-last-child(3),
+#slide3:checked~#controls label:nth-last-child(4),
+#slide4:checked~#controls label:nth-last-child(1) {
+    background: url(https://image.flaticon.com/icons/svg/130/130882.svg) no-repeat;
+    float: left;
+    margin: 0 0 0 -50px;
+    display: block;
+}
+
+#bullets {
+    margin: 150px 0 0;
+    text-align: center;
+}
+
+#bullets label {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 100%;
+    background: #ccc;
+    margin: 0 10px;
+}
+
+#slide1:checked~#bullets label:nth-child(1),
+#slide2:checked~#bullets label:nth-child(2),
+#slide3:checked~#bullets label:nth-child(3),
+#slide4:checked~#bullets label:nth-child(4) {
+    background: #444;
+}
+
+@media screen and (max-width: 900px) {
+    #slide1:checked~#controls label:nth-child(2),
+    #slide2:checked~#controls label:nth-child(3),
+    #slide3:checked~#controls label:nth-child(4),
+    #slide4:checked~#controls label:nth-child(1),
+    #slide1:checked~#controls label:nth-last-child(2),
+    #slide2:checked~#controls label:nth-last-child(3),
+    #slide3:checked~#controls label:nth-last-child(4),
+    #slide4:checked~#controls label:nth-last-child(1) {
+        margin: 0;
+    }
+    #slides {
+        max-width: calc(100% - 140px);
+        margin: 0 auto;
+    }
+}
+
+.slide-content {
+    display: flex;
+}
+
+.slide-content img {
+    width: 574px;
+    margin-right: 42px;
+    border-radius: 61px;
+}
+
+.div_text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.slide-content {
+    display: flex;
+}
+
+.slide-content img {
+    width: 50%;
+    margin-right: 42px;
+    border-radius: 61px;
+}
+
+.div_text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}

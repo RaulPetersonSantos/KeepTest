@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keep Swimming | Cadastro Máquina</title>
+
+   
+    <script src="../javaScript/cadastroMaquina.js"></script>
+    
+    <!-- <link rel="stylesheet" href="nav.css"> -->
+    <link rel="stylesheet" href="cad-maquina.css">
+    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+
+    <!-- <link rel="stylesheet" href="./css/tela-cadastro.css"> -->
+    <!-- <link rel="stylesheet" href="../public/css/tela-cadastro.css"> -->
+
+</head>     
+
+<body>
+
+    <nav>
+        <div class="sidebar-top">
+          <span class="shrink-btn">
+            <i class='bx bx-chevron-left'></i>
+          </span>
+          <img src="../assets/icons/logoSemTexto.png" class="logo" alt="">
+          <h3 class="hide">KeepSwimming</h3>
+        </div>
+    
+        <div class="search">
+         
+        </div>
+    
+        <div class="sidebar-links">
+          <ul>
+            <div class="active-tab"></div>
+       <li class="tooltip-element" data-tooltip="0">
+              <a href="#"  data-active="0">
+                <div class="icon">
+                  <i class='bx bx-notepad'></i>
+                  <i class='bx bxs-notepad'></i>
+                </div>
+                <span class="link hide">Dashboard</span>
+              </a>
+            </li> 
+            
+            <li class="tooltip-element" data-tooltip="1">
+              <a href="#" class="active" data-active="1">
+                <div class="icon" href>
+                  <i class='bx bx-card' ></i>
+                  <i class='bx bxs-card' ></i>
+                </div>
+                <span class="link hide"> Máquina </span>
+              </a>
+            </li>
+            <li class="tooltip-element" data-tooltip="2">
+              <a href="#" data-active="2">
+                <div class="icon">
+                  <i class='bx bx-id-card'></i>
+                  <i class='bx bxs-id-card' ></i>
+                </div>
+                <span class="link hide">Desenvolvedor</span>
+              </a>
+            </li>
+            <li class="tooltip-element" data-tooltip="3">
+              <a href="#" data-active="3">
+                <div class="icon">
+                  <i class='bx bx-bar-chart-square'></i>
+                  <i class='bx bxs-bar-chart-square'></i>
+                </div>
+                <span class="link hide">Monitoramento</span>
+              </a>
+            </li>
+            <div class="tooltip">
+              <span class="show">Dashboard</span>
+              <span>Máquina</span>
+              <span>Desenvolvedor</span>
+              <span>Monitoramento</span>
+            </div>
+          </ul>
+    
+          <h4 class="hide">Atalhos</h4>
+    
+          <ul>
+            <!-- <li class="tooltip-element" data-tooltip="0"> -->
+              <a href="#" data-active="4">
+                <div class="icon">
+                  <!-- <i class='bx bx-notepad'></i>
+                  <i class='bx bxs-notepad'></i> -->
+                </div>
+                <!-- <span class="link hide">Tasks</span> -->
+              </a>
+            </li>
+            <li class="tooltip-element" data-tooltip="1">
+              <a href="https://app.pipefy.com/public/form/w7YSTr_A" data-active="5">
+                <div class="icon">
+                  <i class='bx bx-help-circle'></i>
+                  <i class='bx bxs-help-circle'></i>
+                </div>
+                <span class="link hide">Suporte</span>
+              </a>
+            </li>
+            <div class="tooltip">
+              <span class="show"></span>
+              <span>Suporte</span>
+            </div>
+          </ul>
+        </div>
+    
+        <div class="sidebar-footer">
+          <a href="#" class="account tooltip-element" data-tooltip="0">
+            <i class='bx bx-user'></i>
+          </a>
+          <div class="admin-user tooltip-element" data-tooltip="1">
+            <div class="admin-profile hide">
+              <img src="./img/face-1.png" alt="">
+              <div class="admin-info">
+                <div class="hello">
+                  <h3>Olá, <span id="b_usuario"></span>!</h3>
+              </div>
+              </div>
+            </div>
+            <a href="#" class="log-out">
+              <i class='bx bx-log-out'></i>
+            </a>
+          </div>
+          <div class="tooltip">
+            <span class="show">Raul
+              <div class="hello">
+                <h3>Olá, <span id="b_usuario"></span>!</h3>
+            </div>
+            </span>
+            <span>Logout</span>
+          </div>
+        </div>
+      </nav>
+    
+    
+      <main>
+     
+    
+                <div class="baixo">
+    
+    
+                    <div class="formulario">
+                        <form id="form_cadastro_maquina" method="post" onsubmit="return bt_cadastro_maquina()">
+                            <h3>Cadastre sua Máquina</h3>
+        
+                            <div class="roles">
+    
+                                <div class="ladoEsquerdo">
+    
+                                    <label for="hostName">HostName</label>
+                                    <input name="hostname" type="text" placeholder="Host name" id="hostname_ipt">
+    
+                                    <label for="idFuncionario">ID Funcionário</label>
+                                    <input name="funcionarioId" type="text" placeholder="ID Funcionário"
+                                        id="idfuncionario_ipt">
+    
+                                    <label for="sistemaOperacional">Sistema Operacional</label>
+                                    <input name="sistemaOperacional" type="text" placeholder="Sistema Operacional"
+                                        id="sistemaoperacional_ipt">
+    
+    
+                                </div>
+        
+    
+                                <div class="ladodireito">
+    
+                                    <label for="arquitetura">Arquitetura</label>
+                                    <input name="arquitetura" type="text" placeholder="32bits/64 bits" id="arquitetura_ipt">
+    
+                                    <label for="permissao">Permissão</label>
+                                    <input name="permissao" type="text" placeholder="true / false" id="permissao_ipt">
+    
+                                    <label for="fabricante">Fabricante</label>
+                                    <input name="fabricante" type="text" placeholder="GNU" id="fabricante_ipt">
+    
+                                </div>
+                                
+                                                                <div class="div_botao">
+                                                                    <button class="btn efeito">Cadastrar</button>
+                                                                </div>
+    
+    
+                            </div>
+    
+                        </form>
+                    </div>
+                    <div id="div_aguardar" class="loading-div">
+                        <img src="../assets/aguarde-pink.gif" id="loading-gif">
+    
+                    </div>
+                    <div id="div_erros_login"></div>
+    
+    
+                    <div class="mural_funcionarios" id="mural">
+                    
+                            
+                        <button onclick="listarMaquina()" class="btn_mural_funcionarios" id="btn_funcionarios">Máquinas cadastradas</button>
+                           <div id="feed_container" class="feed-container"></div>
+                    
+                                        <button onclick="listarMaquina()" style="display: none;" id="atualizar">Atualizar Feed</button>
+    
+                                <div class="botoes_crud">
+                                        <button style="display: none;" id="btn_deletar" onclick="deletarMaquina()">Deletar Maquina</button>   
+                                        <button style="display: none;" id="btn_atualizar" onclick="updateMaquina()">Atualizar Maquina</button>             
+                                </div>
+    
+                                <input type = "number" placeholder="id da Maquina" id="updateDelete" style="display: none;" class="inputDeleteUpdate">
+                                
+                                <select  id="atualizarOpcoes" style="display: none;">
+                                    <option value="">Atualizar</option>
+                                    <option value="hostname">HostName</option>
+                                    <option value="permissao">Permissão</option>
+                                    <option value="sistema">Sistema Operacional</option>
+                                </select>
+    
+                                <input id="ipt_update" style="display: none;" class="ipt_update"> 
+    
+                                <div id="respostaDeleteUpdate"></div>
+    
+                          </div>
+
+        
+
+      </main>
+    
+   
+
+
+
+            </div>
+
+
+        </div>
+
+</body>
+
+</html>
+<script src="app.js"></script>
+<script src="../assets/js/funcoes.js"></script>
+
+<script>
+
+var ultimoIdFuncionario = 0;
+
+function listarMaquina() {
+        //aguardar();
+        btn_funcionarios.style.display = 'none';
+        atualizarOpcoes.style.display = 'none';
+            ipt_update.style.display = 'none';
+        btn_deletar.style.display = 'block';
+        btn_atualizar.style.display = 'block';
+        updateDelete.style.display = 'block';
+        atualizar.style.display = 'block';
+        respostaDeleteUpdate.innerHTML = "";
+      
+        fetch("/usuarios/listarMaquina").then(function (resposta) {
+            if (resposta.ok) {
+                if (resposta.status == 204) {
+                    var feed = document.getElementById("feed_container");
+                    var mensagem = document.createElement("span");
+                    mensagem.innerHTML = "Nenhum resultado encontrado."
+                    feed.appendChild(mensagem);
+                    throw "Nenhum resultado encontrado!!";
+                }
+
+                resposta.json().then(function (resposta) {
+                    console.log("Dados recebidos: ", JSON.stringify(resposta));
+
+                    var feed = document.getElementById("feed_container");
+                    feed.innerHTML = "";
+                    for (var i = 0; i < resposta.length; i++) {
+                        var publicacao = resposta[i];
+
+                        // criando e manipulando elementos do HTML via JavaScript
+                        var divPublicacao = document.createElement("div");
+                        var spanHostName = document.createElement("span");
+                        var spanidMaquina = document.createElement("span")
+                        var permissoes = document.createElement("span")
+                     //   var spanGestor = document.createElement("span");
+                        var spanNome = document.createElement("span");
+                        var spanEmail = document.createElement("span");
+                        var spanCargo = document.createElement("span");
+                       // var divDescricao = document.createElement("div");
+                      //  var divButtons = document.createElement("div");
+                        spanHostName.innerHTML ="<p>hostName: <b>" + publicacao.hostName + "</b> </p>";
+                       // spanGestor.innerHTML = "Gestor: <b>"+ publicacao.fkGestor + "</b>";
+                       spanidMaquina.innerHTML ="<p>idMaquina: <b>"+publicacao.idMaquina + "</b></p>";
+                       permissoes.innerHTML ="<p>Permissão: <b>"+publicacao.permissoes + "</b></p>";
+                   
+                        divPublicacao.className = "publicacao";
+                       // spanTitulo.id = "inputNumero"+publicacao.idAviso;
+                        // spanID.className = "id-funcionario";
+                     //   spanGestor.className = "Gestor";
+
+                        spanHostName.className = "hostName";
+                        spanidMaquina.className = "idMaquina";
+                        permissoes.className = "permissoes";
+                        spanCargo.className = "cargo";
+                       // spanTitulo.className = "publicacao-titulo";
+                       // divDescricao.className = "publicacao-descricao";
+
+                       // divButtons.className = "div-buttons"
+
+                        divPublicacao.appendChild(spanHostName);
+                        divPublicacao.appendChild(spanidMaquina);
+                        divPublicacao.appendChild(permissoes);
+                       // divPublicacao.appendChild(spanGestor);
+                        divPublicacao.appendChild(spanNome);
+                        divPublicacao.appendChild(spanEmail);
+                        divPublicacao.appendChild(spanCargo);
+                       // divPublicacao.appendChild(spanTitulo);
+                       // divPublicacao.appendChild(divDescricao);
+                      //  divPublicacao.appendChild(divButtons);
+                        feed.appendChild(divPublicacao);
+
+                        ultimoIdFuncionario = publicacao.idFuncionario;
+                    }
+
+                   // finalizarAguardar();
+                });
+            } else {
+                throw('Houve um erro na API!');
+            }
+        }).catch(function(resposta) {
+            console.error(resposta);
+            //finalizarAguardar();
+        });
+    }
+
+    function deletarMaquina(){
+        var idMaquina= updateDelete.value;
+        respostaDeleteUpdate.innerHTML = "";
+        ipt_update.style.display = 'block';
+
+        if(idMaquina == ''  )
+        {
+            alert("id vazio");
+        }
+        else{
+
+        fetch("/usuarios/deletarMaquina", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                // crie um atributo que recebe o valor recuperado aqui
+                // Agora vá para o arquivo routes/usuario.js
+                
+                idDelete: idMaquina,
+            })
+        }).then(function(resposta) {
+
+            console.log("resposta: ", resposta);
+
+            if (resposta.ok) {
+                console.log('delete realizado com sucesso');
+                respostaDeleteUpdate.innerHTML = "Delete realizado com sucesso";
+                limparFormulario();
+               // finalizarAguardar();
+            } else {
+                throw ("Houve um erro ao tentar realizar o delete!");
+            }
+        }).catch(function(resposta) {
+            console.log(`#ERRO: ${resposta}`);
+           // finalizarAguardar();
+        });
+    }
+
+        return false;
+    }
+
+    function updateMaquina(){
+        var idMaquina = updateDelete.value;
+        var alteracaoMaquina = ipt_update.value;
+        var select_update = atualizarOpcoes.value;
+        respostaDeleteUpdate.innerHTML = "";
+               
+        
+        if(idMaquina == ''  )
+        {
+            alert("id vazio");
+        }
+         else{
+            atualizarOpcoes.style.display = 'block';
+            ipt_update.style.display = 'block';
+      
+
+        fetch("/usuarios/updateMaquina", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                // crie um atributo que recebe o valor recuperado aqui
+                // Agora vá para o arquivo routes/usuario.js
+                
+                idUpdate: idMaquina,
+                alteracao: alteracaoMaquina,
+                updateEscolhido :  select_update,
+            })
+        }).then(function(resposta) {
+
+            console.log("resposta: ", resposta);
+
+            if (resposta.ok) {
+                console.log('');
+                respostaDeleteUpdate.innerHTML = "Alteração " + ipt_update.value + " da máquina "+ idMaquina + " foi realizado com sucesso";
+                limparFormulario();
+               // finalizarAguardar();
+            } else {
+                throw ("Houve um erro ao tentar realizar a alteração!");
+            }
+        }).catch(function(resposta) {
+            console.log(`#ERRO: ${resposta}`);
+           // finalizarAguardar();
+        });
+    }
+        return false;
+    }
+
+   
+</script>
